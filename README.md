@@ -2,7 +2,7 @@
 
 Unraid-friendly Docker image for [MeshSense](https://github.com/Affirmatech/MeshSense), the Meshtastic network monitor and mapper from Affirmatech. It runs MeshSense's API and web UI headless, built from upstream source.
 
-Image: `ghcr.io/poag/meshsense:latest`. It is rebuilt daily from upstream `master`.
+Image: `ghcr.io/poag/meshsense:latest`. It is rebuilt on every push to `main` and monthly (1st of the month, uncached, with fresh base images) so it picks up upstream `master` and OS/Node security updates. Run the workflow manually from the Actions tab for an out-of-band rebuild.
 
 ## Run
 

@@ -7,7 +7,9 @@ name: Docker
 
 on:
   schedule:
-    - cron: '26 5 * * *'
+    # Monthly rebuild (1st, 05:26 UTC) to pick up base image and OS security updates
+    - cron: '26 5 1 * *'
+  workflow_dispatch:
   push:
     branches: [ "main" ]
     # Publish semver tags as releases.
@@ -80,6 +82,10 @@ jobs:
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
         with:
           context: .
+          # Scheduled/manual rebuilds skip the layer cache and re-pull base images so
+          # apt and Node security updates are actually applied
+          pull: true
+          no-cache: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
