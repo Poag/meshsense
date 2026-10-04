@@ -29,7 +29,7 @@ State is stored in `/config/meshsense`. Mount `/config` as a directory.
 ## Limits
 
 - Connect to the node over WiFi/TCP. Bluetooth and USB serial are not set up in the container, and the logged D-Bus errors at startup are harmless.
-- The app calls out to `affirmatech.com` for its news check and to `meshsense.affirmatech.com` for map forwarding, so it needs internet access.
+- The app checks `affirmatech.com` for news, and sends node data to `meshsense.affirmatech.com` only if you enable map forwarding in the UI. Override that endpoint with `MESHMAP_URL`.
 
 ## Build
 
