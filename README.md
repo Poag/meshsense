@@ -20,7 +20,7 @@ Open `http://<host>:5920`.
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | `ADDRESS` | empty | IP/hostname of the Meshtastic node (WiFi/TCP). Connects on startup. Can also be set in the UI. |
-| `ACCESS_KEY` | empty | Key that grants full permissions to remote (non-localhost) clients. Without it, connect/disconnect/send/position changes are refused from other machines. |
+| `ACCESS_KEY` | empty | Optional Bearer token that grants full API permissions to remote clients. Upstream already trusts IPv4 clients (`::ffff:` addresses), so this is not a web UI login; do not expose the port to the internet. |
 | `PORT` | `5920` | Port the web UI listens on inside the container. |
 | `PUID` / `PGID` | `99` / `100` | User and group that own `/config` and run the process (Unraid `nobody:users`). |
 
